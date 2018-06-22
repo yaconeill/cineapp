@@ -11,6 +11,7 @@ public class Article {
 	private String status;
 	
 	public Article() {
+		//System.out.println("Constructor noticia");
 		this.date = new Date();
 		this.status = "Active";
 	}
@@ -28,6 +29,7 @@ public class Article {
 	}
 
 	public void setTitle(String title) {
+		//System.out.println("Set titulo");
 		this.title = title;
 	}
 
@@ -44,6 +46,7 @@ public class Article {
 	}
 
 	public void setDetails(String details) {
+		//System.out.println("Set detalle");
 		this.details = details;
 	}
 
@@ -52,6 +55,7 @@ public class Article {
 	}
 
 	public void setStatus(String status) {
+		//System.out.println("Set estatus");
 		this.status = status;
 	}
 

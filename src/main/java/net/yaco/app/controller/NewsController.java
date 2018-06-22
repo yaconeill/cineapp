@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import net.yaco.app.model.Article;
 import net.yaco.app.service.IArticlesService;
@@ -23,13 +22,7 @@ public class NewsController {
 	}
 	
 	@PostMapping(value="/save")
-	public String save(@RequestParam("titulo") String title, @RequestParam("estatus") String status, 
-			@RequestParam("detalle") String details) {
-		Article article = new Article();
-		article.setTitle(title);
-		article.setStatus(status);
-		article.setDetails(details);
-		
+	public String save(Article article) {
 		// Pendiente: Guardar obj en BD
 		
 		serviceArticles.save(article);
