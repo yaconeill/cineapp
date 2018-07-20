@@ -14,7 +14,8 @@ http://www.springframework.org/schema/security/spring-security.xsd">
 		<intercept-url pattern="/banners/*" access="hasAnyAuthority('GERENTE')" />
 		
 		<!-- Custom login form  -->
-		<form-login login-page="/formLogin"/>		
+		<form-login login-page="/formLogin" 
+			default-target-url="/admin/index"/>
 	</http>
 
 	<authentication-manager>
