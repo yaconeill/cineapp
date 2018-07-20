@@ -2,7 +2,20 @@ package net.yaco.app.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Movies")
 public class Movie {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment MySQL
 	private int id;
 	private String title;
 	private int duration;
@@ -11,6 +24,32 @@ public class Movie {
 	private String image = "cinema.png"; // Default image
 	private Date releaseDate;
 	private String status = "Active";
+	
+	//@Transient	// Ignore this attribute
+	@OneToOne
+	@JoinColumn(name = "detailId")
+	private Detail detail;
+	
+//	@OneToMany(mappedBy = "movie", fetch = FetchType.EAGER)
+//	private List<Schedule> schedules;
+
+	public Movie() { }
+
+	public Detail getDetail() {
+		return detail;
+	}
+
+	public void setDetail(Detail detail) {
+		this.detail = detail;
+	}	
+
+//	public List<Schedule> getSchedules() {
+//		return schedules;
+//	}
+//
+//	public void setSchedules(List<Schedule> schedules) {
+//		this.schedules = schedules;
+//	}
 
 	public int getId() {
 		return id;
@@ -79,7 +118,8 @@ public class Movie {
 	@Override
 	public String toString() {
 		return "Movie [id=" + id + ", title=" + title + ", duration=" + duration + ", rating=" + rating + ", genre="
-				+ genre + ", image=" + image + ", releaseDate=" + releaseDate + ", status=" + status + "]";
+				+ genre + ", image=" + image + ", releaseDate=" + releaseDate + ", status=" + status + ", detail="
+				+ detail + "]";
 	}
 
 }

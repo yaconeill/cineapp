@@ -43,8 +43,8 @@
 							<div class="panel-body">                           
 								<p>
 									Título Original : ${ movie.title } <br>
-									Actores :  <br>
-									Director:  <br>                  
+									Actores : ${ movie.detail.actors } <br>
+									Director: ${ movie.detail.director } <br>                  
 									Clasificación: ${ movie.rating } <br>
 									Duración: ${ movie.duration } minutos <br>
 									Género: ${ movie.genre} <br>                  
@@ -59,7 +59,7 @@
 
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title"><span class="label label-success">20-05-2017</span></h3>
+						<h3 class="panel-title"><span class="label label-success">${ searchDate }</span></h3>
 					</div>
 					<div class="panel-body">
 						<table class="table table-striped">
@@ -70,42 +70,14 @@
 									<th>Precio</th>                                  
 								</tr>
 							</thead>
-							<tbody>             
-								<tr>                 
-									<td>16:00</td>
-									<td>Sala 1</td>  
-									<td>$10</td>  
-								</tr>              
-								<tr>                 
-									<td>18:00</td>
-									<td>Sala 1</td> 
-									<td>$10</td>  
-								</tr>              
-								<tr>                 
-									<td>20:00</td>
-									<td>Sala 1</td>                        
-									<td>$10</td>  
-								</tr>              
-								<tr>                
-									<td>14:00</td>
-									<td>Sala 1</td>                       
-									<td>$10</td>  
-								</tr>              
-								<tr>               
-									<td>16:00</td>
-									<td>Sala 1</td> 
-									<td>$10</td>  
-								</tr>                             
-								<tr>                  
-									<td>20:00</td>
-									<td>Sala 1</td> 
-									<td>$10</td>  
-								</tr>              
-								<tr>                 
-									<td>22:00</td>
-									<td>Sala 1</td>  
-									<td>$10</td>  
-								</tr>              
+							<tbody>         
+								<c:forEach items="${ schedules }" var="schedule">
+									<tr>
+										<td>${ schedule.hour }</td>
+										<td>${ schedule.cinemaRoom }</td>
+										<td>${ schedule.price} €</td>
+									</tr>								
+								</c:forEach>              
 							</tbody>           
 						</table>
 					</div>
@@ -120,7 +92,7 @@
 							</div>
 							<div class="panel-body">
 								<iframe width="100%" height="315" 
-												src="" >                          
+												src="${ movie.detail.trailer }" >                          
 								</iframe>
 							</div>
 						</div>           
@@ -131,7 +103,7 @@
 								<h3 class="panel-title">SINOPSIS</h3>
 							</div>
 							<div class="panel-body">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</p>
+								<p>${ movie.detail.synopsis }</p>
 							</div>
 						</div>                          
 					</div>

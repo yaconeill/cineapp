@@ -2,8 +2,18 @@ package net.yaco.app.model;
 
 import java.util.Date;
 
-public class Article {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="News")
+public class Article {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String title;
 	private Date date;
@@ -11,7 +21,6 @@ public class Article {
 	private String status;
 	
 	public Article() {
-		//System.out.println("Constructor noticia");
 		this.date = new Date();
 		this.status = "Active";
 	}
